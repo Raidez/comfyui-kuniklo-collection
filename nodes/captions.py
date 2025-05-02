@@ -71,7 +71,11 @@ class ApplySVG2Image:
     FUNCTION = "execute"
     CATEGORY = "kuniklo"
 
-    def execute(self, images, svg, width, height, offset_x, offset_y, properties):
+    def execute(self, images, svg, width, height, offset_x, offset_y, **kwargs):
+        properties = {}
+        if "properties" in kwargs:
+            properties = kwargs["properties"]
+
         output_images = []
         for image in images:
             # interpolate properties
